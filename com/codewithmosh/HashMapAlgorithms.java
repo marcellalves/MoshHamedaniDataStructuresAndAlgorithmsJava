@@ -1,14 +1,15 @@
+package com.codewithmosh;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class FirstNonRepeatingCharacter {
-  public static void main(final String[] args) {
-    final var inputString = "a green apple ";
+public class HashMapAlgorithms {
+  public void firstNonRepeatingCharacter(final String inputString) {
     final var result = getFirstNonRepeatingCharacter(inputString);
     System.out.println(result);
   }
 
-  private static char getFirstNonRepeatingCharacter(String input) {
+  private char getFirstNonRepeatingCharacter(String input) {
     Map<Character, Integer> characterMapper = new HashMap<>();
     var chars = input.toCharArray();
     for (var c : chars) {

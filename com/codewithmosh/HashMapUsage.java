@@ -1,8 +1,10 @@
+package com.codewithmosh;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class HashMapUsage {
-  public static void main(String[] args) {
+  public void operations() {
     Map<Integer, String> map = new HashMap<>();
     map.put(1, "Mosh");
     map.put(2, "John");
