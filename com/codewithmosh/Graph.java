@@ -64,25 +64,21 @@ public class Graph {
         adjacencyList.get(fromNode).remove(toNode);
     }
 
-    private Set<Node> visited = new HashSet<>();
-
-    public void DFSRecursive(String initialNode) { 
-        DFSRecursive(nodes.get(initialNode));
-    }
-
-    private void DFSRecursive(Node currentNode) {
-        if (!visited.contains(currentNode)) {
-            System.out.println(currentNode.label);
-            visited.add(currentNode);
-        }
-
-        var al = adjacencyList.get(currentNode);
-
-        if (al.size() == 0)
+    public void traverseDepthFirst(String root) {
+        var node = nodes.get(root);
+        if (node == null)
             return;
 
-        for (var n : al) {
-            DFSRecursive(n);
+        traverseDepthFirst(node, new HashSet<>());
+    }
+
+    private void traverseDepthFirst(Node currentNode, Set<Node> visited) {
+        System.out.println(currentNode.label);
+        visited.add(currentNode);
+
+        for (var node : adjacencyList.get(currentNode)) {
+            if (!visited.contains(node))
+                traverseDepthFirst(node, visited);
         }
     }
 
