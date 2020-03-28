@@ -1,10 +1,12 @@
 package com.codewithmosh;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
@@ -104,6 +106,31 @@ public class Graph {
             for (var neighbour : adjacencyList.get(current)) {
                 if (!visited.contains(neighbour))
                     stack.push(neighbour);
+            }
+        }
+    }
+
+    public void traverseBreadthFirst(String root) {
+        var node = nodes.get(root);
+        if (node == null)
+            return;
+
+        Set<Node> visited = new HashSet<>();
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            var current = queue.remove();
+
+            if (visited.contains(current))
+                continue;
+            
+            System.out.println(current);
+            visited.add(current);
+
+            for (var neighbour : adjacencyList.get(current)) {
+                if (!visited.contains(neighbour))
+                    queue.add(neighbour);
             }
         }
     }
