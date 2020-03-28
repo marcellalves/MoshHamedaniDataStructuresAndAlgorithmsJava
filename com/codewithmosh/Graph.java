@@ -2,8 +2,10 @@ package com.codewithmosh;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Graph {
     private class Node {
@@ -60,6 +62,28 @@ public class Graph {
             return;
 
         adjacencyList.get(fromNode).remove(toNode);
+    }
+
+    private Set<Node> visited = new HashSet<>();
+
+    public void DFSRecursive(String initialNode) { 
+        DFSRecursive(nodes.get(initialNode));
+    }
+
+    private void DFSRecursive(Node currentNode) {
+        if (!visited.contains(currentNode)) {
+            System.out.println(currentNode.label);
+            visited.add(currentNode);
+        }
+
+        var al = adjacencyList.get(currentNode);
+
+        if (al.size() == 0)
+            return;
+
+        for (var n : al) {
+            DFSRecursive(n);
+        }
     }
 
     public void print() {

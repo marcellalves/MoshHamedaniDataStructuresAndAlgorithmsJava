@@ -6,10 +6,15 @@ public class Main {
       graph.addNode("A");
       graph.addNode("B");
       graph.addNode("C");
+      graph.addNode("D");
+      graph.addNode("E");
+
       graph.addEdge("A", "B");
-      graph.addEdge("A", "C");
-      graph.removeNode("A");
-      graph.addEdge("B", "C");
-      graph.print();
+      graph.addEdge("A", "E");
+      graph.addEdge("B", "E");
+      graph.addEdge("C", "A");
+      graph.addEdge("C", "B");
+      graph.addEdge("C", "D");
+      graph.DFSRecursive("C");
     }
 }
